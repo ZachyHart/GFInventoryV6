@@ -83,7 +83,7 @@ if (isset($_GET["editproduct"])) {
                 </li>
                 <li class="sidebar-item">
                     <a href="AdminFeedback.php" class="sidebar-link" data-page="feedback" title="Feedback">
-                        <!-- temporary since no admi nfeedback yet -->
+                      
                         <i class="lni lni-comments"></i>
                         <span>Feedback</span>
                     </a>
@@ -245,59 +245,76 @@ if (isset($_GET["editproduct"])) {
 
     <!-- Edit modal -->
     <div class="modal fade" id="editProductModal" tabindex="-1" aria-labelledby="editProductModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header text-center">
-                    <h5 class="modal-title w-100" id="editProductModalLabel">Edit
-                        Product</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-
-                <div class="modal-body">
-                    <form id="editProductForm" method="post" action="./controllers/editProduct.php"
-                        enctype="multipart/form-data">
-                        <input type="hidden" id="product_id" name="product_id">
-                        <div class=" mb-3">
-                            <label for="productImage" class="form-label">Product
-                                Image</label>
-                            <input type="file" class="form-control" id="product_image_edit" accept="image/*"
-                                name="product_image" disabled>
-                        </div>
-                        <div class="mb-3">
-                            <input type="checkbox" id="changeImage" name="changeImage" value="changeImage">
-                            <label for="changeImage">Change Image</label>
-                        </div>
-                        <input type="hidden" id="product_image_old" name="product_image_old">
-                        <div class="mb-3">
-                            <label for="productCategory" class="form-label">Product
-                                Category</label>
-                            <input type="text" class="form-control" id="product_category" name="product_category">
-                        </div>
-                        <div class="mb-3">
-                            <label for="productName" class="form-label">Product
-                                Name</label>
-                            <input type="text" class="form-control" id="product_name" name="product_name">
-                        </div>
-                        <div class="mb-3">
-                            <label for="productPrice" class="form-label
-                            ">Price</label>
-                            <input type="number" class="form-control" id="price" name="price">
-                        </div>
-                        <div class="mb-3">
-                            <label for="productStock" class="form-label
-                            ">Stock Level</label>
-                            <input type="number" class="form-control" id="stock" name="stock">
-                        </div>
-                        <div class="text-center">
-                            <button type="submit" class="btn btn-save-product">Save
-                                Product</button>
-                        </div>
-                    </form>
-                </div>
+    aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header text-center">
+                <h5 class="modal-title w-100" id="editProductModalLabel">Edit Product</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="editProductForm" method="post" action="./controllers/editProduct.php"
+                    enctype="multipart/form-data">
+                    <input type="hidden" id="product_id" name="product_id">
+                    <div class=" mb-3">
+                        <label for="productImage" class="form-label">Product Image</label>
+                        <input type="file" class="form-control" id="product_image_edit" accept="image/*"
+                            name="product_image" disabled>
+                    </div>
+                    <div class="mb-3">
+                        <input type="checkbox" id="changeImage" name="changeImage" value="changeImage">
+                        <label for="changeImage">Change Image</label>
+                    </div>
+                    <input type="hidden" id="product_image_old" name="product_image_old">
+                    <div class="mb-3">
+                        <label for="productCategory" class="form-label">Product Category</label>
+                        <input type="text" class="form-control" id="product_category" name="product_category">
+                    </div>
+                    <div class="mb-3">
+                        <label for="productName" class="form-label">Product Name</label>
+                        <input type="text" class="form-control" id="product_name" name="product_name">
+                    </div>
+                    <div class="mb-3">
+                        <label for="productPrice" class="form-label">Price</label>
+                        <input type="number" class="form-control" id="price" name="price">
+                    </div>
+                    <div class="mb-3">
+                        <label for="productStock" class="form-label">Stock Level</label>
+                        <input type="number" class="form-control" id="stock" name="stock">
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-save-product">Save Product</button>
+                    </div>
+                   
+                    
+                </form>
             </div>
         </div>
     </div>
+</div>
+
+<!-- Delete modal -->
+<div class="modal fade" id="deleteProductModal" tabindex="-1" aria-labelledby="deleteProductModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header text-center">
+                <h5 class="modal-title w-100" id="deleteProductModalLabel">Delete Product</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="deleteProductForm" method="post" action="./controllers/deleteProduct.php">
+                    <input type="hidden" id="delete_product_id" name="product_id">
+                    <p class="text-center">Are you sure you want to delete this product?</p>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-danger btn-delete-product">Delete Product</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
 
     <!-- Delete modal -->
     <div class="modal fade" id="deleteProductModal" tabindex="-1" aria-labelledby="deleteProductModalLabel"

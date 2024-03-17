@@ -702,3 +702,43 @@ body {
     background-color: #dbdbdb;
     border: 1px solid #e0e0e0;
 }
+
+.product-display-item img {
+    /* Adjustments may be needed based on actual image size and desired layout */
+    width: auto; /* or a specific width, e.g., 100px */
+    height: 100px; /* or auto for automatic height */
+    object-fit: cover; /* this will ensure the image covers the area without distortion */
+    border-radius: 5px; /* Optional: if you want rounded corners on images */
+    margin-right: 20px; /* Space between image and details */
+}
+
+.product-display-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Align image and details to opposite ends */
+    padding: 16px; /* Adjust padding as needed */
+    border: 1px solid #dee2e6; /* A light grey border as in the image */
+    border-radius: 5px; /* Slightly rounded corners on the cards */
+    margin-bottom: 16px; /* Space between items */
+    background: #fff; /* White background for the product card */
+}
+
+.product-display-item h5 {
+    margin: 0; /* Reset margin for the title */
+    font-size: 1.25rem; /* Adjust title size as needed */
+    font-weight: 500; /* Semi-bold font weight for the title */
+}
+
+.product-display-item p {
+    margin: 4px 0; /* Spacing between paragraphs */
+    font-size: 1rem; /* Adjust paragraph text size as needed */
+}
+
+/* Styling for buttons */
+.btn-outline-secondary, .btn-outline-danger {
+    padding: .375rem .75rem; /* Adjust button padding */
+    font-size: .875rem; /* Adjust font size for buttons */
+    line-height: 1.5; /* Line height for button text */
+    border-radius: .25rem; /* Rounded corners for buttons */
+    margin-left: .5rem; /* Space between buttons */
+}
