@@ -18,6 +18,9 @@ require_once 'helpers/conn_helpers.php';
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Bowlby+One+SC&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* Additional CSS styles */
+    </style>
 </head>
 
 <body>
@@ -60,6 +63,21 @@ require_once 'helpers/conn_helpers.php';
                 <div class="inventory-title">PRODUCTS LIST</div>
             </div>
 
+            <!-- Sort by Category dropdown -->
+            <div class="dropdown mx-auto">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="sortCategoryDropdown"
+                    data-bs-toggle="dropdown" aria-expanded="false">
+                    Sort by Category
+                </button>
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="sortCategoryDropdown">
+
+                    <li><a class="dropdown-item" href="#">Category 1</a></li>
+                    <li><a class="dropdown-item" href="#">Category 2</a></li>
+                    <li><a class="dropdown-item" href="#">Category 3</a></li>
+
+                </ul>
+            </div>
+
             <div class="container my-3">
                 <div class="row">
                     <div class="col-lg-12">
@@ -69,19 +87,17 @@ require_once 'helpers/conn_helpers.php';
                             $result = mysqli_query($conn, $sql);
                             if (mysqli_num_rows($result) > 0) {
                                 while ($row = mysqli_fetch_assoc($result)) {
-                                    echo '<div class="product-display-item d-flex align-items-center justify-content-between p-3 mb-3" style="border: 1px solid #dee2e6; border-radius: 5px;">';
-                                    echo '<div class="d-flex align-items-center">';
+                                    echo '<div class="product-display-item d-flex flex-column flex-md-row align-items-md-center justify-content-between p-3 mb-3" style="border: 1px solid #dee2e6; border-radius: 5px;">';
+                                    echo '<div class="d-flex align-items-center mb-2 mb-md-0">';
                                     echo '<img src="img/products/' . $row['product_image'] . '" alt="' . htmlspecialchars($row['product_name'], ENT_QUOTES, 'UTF-8') . '" style="width: 100px; height: auto; margin-right: 20px;">';
                                     echo '<div>';
-                                    echo '<h5>' . htmlspecialchars($row['product_name'], ENT_QUOTES, 'UTF-8') . '</h5>';
-                                    echo '<p>' . htmlspecialchars($row['product_category'], ENT_QUOTES, 'UTF-8') . '</p>';
-                                    echo '<p>Price: ₱' . htmlspecialchars($row['price'], ENT_QUOTES, 'UTF-8') . '</p>';
-                                    echo '<p>Stock: ' . htmlspecialchars($row['stock'], ENT_QUOTES, 'UTF-8') . '</p>';
+                                    echo '<p class="card-text"><small class="text-category">' . htmlspecialchars($row['product_category'], ENT_QUOTES, 'UTF-8') . '</small></p>';
+                                    echo '<h5 class="card-title">' . htmlspecialchars($row['product_name'], ENT_QUOTES, 'UTF-8') . '</h5>';
+                                    echo '<p>₱' . htmlspecialchars($row['price'], ENT_QUOTES, 'UTF-8') . '</p>';
                                     echo '</div>';
                                     echo '</div>';
-                                    echo '<div>';
-                                    echo '<button class="btn btn-outline-secondary me-2" type="button" data-bs-toggle="modal" data-bs-target="#editProductModal">Edit</button>';
-                                    echo '<button class="btn btn-outline-danger" type="button" data-bs-toggle="modal" data-bs-target="#deleteProductModal">Delete</button>';
+                                    echo '<div class="d-flex align-items-center">';
+                                    echo '<p class="card-text"><small class="text-category">In stock x ' . htmlspecialchars($row['stock'], ENT_QUOTES, 'UTF-8') . ' </small></p>';
                                     echo '</div>';
                                     echo '</div>';
                                 }
@@ -94,46 +110,6 @@ require_once 'helpers/conn_helpers.php';
                 </div>
             </div>
 
-        </div>
-    </div>
-
-    <!-- Bootstrap modal structure for edit product -->
-    <div class="modal fade" id="editProductModal" tabindex="-1" aria-labelledby="editProductModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="editProductModalLabel">Edit Product</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <!-- Add your edit product form here -->
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Bootstrap modal structure for delete confirmation -->
-    <div class="modal fade" id="deleteProductModal" tabindex="-1" aria-labelledby="deleteProductModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="deleteProductModalLabel">Delete Product</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    Are you sure you want to delete this product?
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                    <button type="button" class="btn btn-danger">Delete</button>
-                </div>
-            </div>
         </div>
     </div>
 
